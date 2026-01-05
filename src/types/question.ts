@@ -72,4 +72,5 @@ export interface FormState {
   answers: Record<string, FormAnswer>;
   isComplete: boolean;
   showOverview: boolean;
+  isLoading: boolean;
 }

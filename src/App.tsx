@@ -5,6 +5,7 @@ import QuestionRenderer from './components/questions/QuestionRenderer';
 import Button from './components/ui/Button';
 import ProgressBar from './components/ui/ProgressBar';
 import FormOverview from './components/overview/FormOverview';
+import HairfallLoader from './components/ui/HairfallLoader';
 
 function App() {
   const {
@@ -31,6 +32,10 @@ function App() {
   const goBackFromOverview = () => {
     goToQuestion(sampleQuestions.length - 1);
   };
+
+  if (state.isLoading) {
+    return <HairfallLoader />;
+  }
 
   if (state.showOverview) {
     return (

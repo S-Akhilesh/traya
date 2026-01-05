@@ -7,6 +7,7 @@ export function useFormState(questions: Question[]) {
     answers: {},
     isComplete: false,
     showOverview: false,
+    isLoading: false,
   });
 
   const updateAnswer = useCallback((answer: FormAnswer) => {
@@ -52,9 +53,18 @@ export function useFormState(questions: Question[]) {
   const submitForm = useCallback(() => {
     setState((prev) => ({
       ...prev,
-      isComplete: true,
+      isLoading: true,
       showOverview: false,
     }));
+
+    const loadingDuration = 2500;
+    setTimeout(() => {
+      setState((prev) => ({
+        ...prev,
+        isLoading: false,
+        isComplete: true,
+      }));
+    }, loadingDuration);
   }, []);
 
   const goToPrevious = useCallback(() => {
